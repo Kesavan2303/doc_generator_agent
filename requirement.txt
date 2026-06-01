@@ -1,7 +1,7 @@
 langchain-groq
 langchain
-langchain-community
 langgraph
+langchain-community
 langchain-text-splitters
 streamlit
 python-docx
