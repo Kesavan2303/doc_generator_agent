@@ -1,0 +1,8 @@
+langchain-groq
+langchain
+langchain-community
+langgraph
+langchain-text-splitters
+streamlit
+python-docx
+python-dotenv
