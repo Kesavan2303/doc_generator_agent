@@ -234,21 +234,11 @@ if requirements.strip() == "":
 
 # ── Generation Logic ──────────────────────────────────────────────────────────
 if generate_btn:
-    with st.status(f"🤖 Generating your {selected} document...", expanded=True) as status:
-        st.write("🔍 Analyzing requirements...")
-        import time; time.sleep(0.4)
-        st.write("📐 Structuring document sections...")
-        time.sleep(0.4)
-        st.write("✍️ Writing document content with AI...")
-        content = generate_document(selected, requirements)
-        st.write("💾 Saving to history...")
-        save_document(selected, requirements, content)   # ← HISTORY SAVED HERE
-        time.sleep(0.2)
-        status.update(label="✅ Document ready!", state="complete", expanded=False)
-
+    content = st.write_stream(generate_document(selected, requirements))
+    save_document(selected, requirements, content)
     st.session_state.loaded_content  = content
     st.session_state.loaded_doc_type = selected
-    st.rerun()  # refresh sidebar history instantly
+    st.rerun()
 
 # ── Output area (shows both newly generated AND loaded from history) ──────────
 if st.session_state.loaded_content:
